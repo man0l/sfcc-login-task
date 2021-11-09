@@ -5,6 +5,7 @@
  */
 
 var server = require('server');
+var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
 var cache = require('*/cartridge/scripts/middleware/cache');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
@@ -17,13 +18,14 @@ var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
  * @name Base/Home-Show
  * @function
  * @memberof Home
+ * @param {middleware} - userLoggedIn.validateLoggedIn
  * @param {middleware} - consentTracking.consent
  * @param {middleware} - cache.applyDefaultCache
  * @param {category} - non-sensitive
  * @param {renders} - isml
  * @param {serverfunction} - get
  */
-server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (req, res, next) {
+server.get('Show', userLoggedIn.validateLoggedIn, consentTracking.consent, cache.applyDefaultCache, function (req, res, next) {
     var Site = require('dw/system/Site');
     var PageMgr = require('dw/experience/PageMgr');
     var pageMetaHelper = require('*/cartridge/scripts/helpers/pageMetaHelper');
