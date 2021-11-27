@@ -1,0 +1,8 @@
+{
+    "hooks": [
+        {
+            "name": "app.home_show_extender",
+            "script": "./cartridge/scripts/hooks/extender.js"
+        }
+    ]
+}
