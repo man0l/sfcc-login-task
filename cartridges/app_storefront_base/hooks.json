@@ -31,6 +31,15 @@
         {
             "name": "app.experience.editmode",
             "script": "./cartridge/experience/hooks.js"
+        },
+        {
+            "name": "app.payment.processor.my_custom_basic_credit",
+            "script": "./cartridge/scripts/hooks/payment/processor/my_custom_basic_credit"
+        },
+        {
+            "name": "app.payment.form.processor.my_custom_basic_credit",
+            "script": "./cartridge/scripts/hooks/payment/processor/my_custom_basic_credit_form_processor"
         }
+        
     ]
 }

@@ -1,0 +1,17 @@
+<isdecorate template="common/layout/page">
+    <isset name="resultsCount" value="${pdict.searchResults.count}" scope="page" />
+    <isset name="query" value="${pdict.query}" scope="page" />
+    <isif condition="${pdict.searchResults.length} > 0">
+        Results for searching ${query} <isprint value="${resultsCount}" style="INTEGER" />
+        <isloop items="${pdict.searchResults.productSearchHits}" var="productHit">
+            <isset name="product" value="${productHit.getProduct()}" scope="page" />
+            <a href="${URLUtils.url('Product-Show', 'pid', product.ID)}">
+            <div>${product.name}</div>
+            </a>
+            
+            <div><img src="${product.getImage('small').httpUrl}" alt="${product.getImage('small').alt}" /></div>
+        </isloop>
+    <iselse/>
+        no results
+    </isif>
+</isdecorate>

@@ -1,0 +1,8 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var items = ['one', 'two', 'three'];     
+    </isscript>
+    <isloop items="${items}" var="subItem" status="index">
+        ${subItem}
+    </isloop>
+</isdecorate>
