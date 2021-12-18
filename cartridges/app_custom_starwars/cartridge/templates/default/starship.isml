@@ -1,0 +1,4 @@
+Name: <isprint value=${pdict.starship.name} />
+Mode: <isprint value=${pdict.starship.model} />
+Manifacturer: <isprint value=${pdict.starship.manufacturer} />
+Starship class: <isprint value=${pdict.starship.starship_class} />
