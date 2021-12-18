@@ -17,7 +17,9 @@ function getProfile(profile) {
             lastName: profile.lastName,
             email: profile.email,
             phone: Object.prototype.hasOwnProperty.call(profile, 'phone') ? profile.phone : profile.phoneHome,
-            password: '********'
+            password: '********',
+            contryResidence: profile.contryResidence,
+            interest: profile.interest
         };
     } else {
         result = null;
