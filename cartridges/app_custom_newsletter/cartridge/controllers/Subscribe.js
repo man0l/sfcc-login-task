@@ -5,7 +5,7 @@ var UUIDUtils = require('dw/util/UUIDUtils');
 var Transaction = require('dw/system/Transaction');
 var CustomObjectMgr = require('dw/object/CustomObjectMgr');
 
-server.get(
+server.post(
     'Create',
     server.middleware.https,
     function (req, res, next) {
@@ -18,12 +18,14 @@ server.get(
 
       var type = 'NewsletterSubscription';
       var keyValue = UUIDUtils.createUUID();
-
+      
       try {
         Transaction.wrap(function() {
-          var newsletter = CustomObjectMgr.createCustomObject(type, keyValue);
-          newsletter.custom.name = form.name;
+          var newsletter = CustomObjectMgr.createCustomObject(type, keyValue);          
           newsletter.custom.email = form.email;
+          newsletter.custom.firstName = form.firstName;
+          newsletter.custom.lastName = form.lastName;
+          newsletter.custom.gender = form.gender;          
         });
       } catch (error) {
         error = true;
@@ -44,7 +46,7 @@ server.get(
     }
 );
 
-server.get(
+server.post(
     'Delete',
     function (req, res, next) {
       var form = req.form;
@@ -75,7 +77,7 @@ server.get(
           id: keyValue
         });
       }
-      
+
       next();
     }
 );
