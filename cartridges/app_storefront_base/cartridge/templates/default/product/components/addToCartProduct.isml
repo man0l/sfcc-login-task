@@ -6,7 +6,7 @@
                 data-pid="${product.id}"
                 ${!product.readyToOrder || !product.available ? "disabled" : ""}>
             <i class="fa fa-shopping-bag"></i>
-            ${Resource.msg('button.addtocart', 'common', null)}
+            ${Resource.msg('button.addtocart', 'backinstock', null)}
         </button>
 
         <isinclude template="product/components/addToCartButtonExtension"/>
