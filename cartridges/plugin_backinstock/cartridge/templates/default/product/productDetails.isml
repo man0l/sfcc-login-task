@@ -5,8 +5,8 @@
         assets.addJs('/js/productDetail.js');
         assets.addJs('/js/backInStock.js');
         assets.addCss('/css/product/detail.css');
+        
     </isscript>
-
     <isset name="product" value="${pdict.product}" scope="page" />
     <isset name="isQuickView" value="${false}" scope="page" />
     <isset name="isProductSet" value="${pdict.product.productType === 'set'}" scope="page" />
@@ -144,5 +144,6 @@
                 <isslot id="product-recommendations-m" description="Recommended products" context="global" context-object="${pdict.product.raw}" />
             </div>
         </div>
+        <isinclude template="product/components/backInStockModal"/>
     </isobject>
 </isdecorate>

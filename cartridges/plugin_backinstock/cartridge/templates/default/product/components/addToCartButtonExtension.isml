@@ -1,5 +1,4 @@
-    <input type="hidden" class="add-to-cart-url" value="${pdict.addToCartUrl}">
-    <button class="add-to-cart btn btn-primary"
+    <button class="back-in-stock btn btn-primary"
             data-toggle="modal" data-target="#backInStockModal"
             data-pid="${product.id}"
     >

@@ -1,0 +1,28 @@
+<form class="back-in-stock-form" action="${URLUtils.url('Twilio-Subscribe')}" method="POST" name="phone-form" id="phone-form">
+    <div class="back-in-stock-body">
+        <p>            
+            ${Resource.msg('msg.backinstock', 'backinstock', null)}
+        </p>
+        <div class="form-group required">
+            <label class="form-control-label" for="reset-password-email">
+                <isprint value="${Resource.msg('label.input.backinstock.phone', 'backinstock', null)}" encoding="htmlcontent" />
+            </label>
+            <input
+                id="back-in-stock-phone"
+                type="text"
+                class="form-control"
+                name="phone"
+                aria-describedby="phoneHelp"
+                placeholder="${Resource.msg('label.input.backinstock.phone', 'backinstock', null)}">
+            <div class="invalid-feedback"></div>
+        </div>
+    </div>
+    <div class="send-phone-btn">
+        <button
+            type="submit"
+            id="submitPhoneButton"
+            class="btn btn-primary btn-block">
+            ${Resource.msg('button.notify', 'backinstock', null)}
+        </button>
+    </div>
+</form>
