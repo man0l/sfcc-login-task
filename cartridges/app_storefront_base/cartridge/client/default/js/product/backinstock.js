@@ -1,6 +1,6 @@
 'use strict';
 
-var formValidation = require('./components/formValidation');
+var formValidation = require('../components/formValidation');
 
 module.exports = function () {
     $('form.back-in-stock-form').submit(function (e) {
