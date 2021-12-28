@@ -19,11 +19,24 @@
  */
  server.post('Subscribe', server.middleware.https, function (req, res, next) {
     
+     var form = req.form;
 
-    res.json({
-        success: false,
-        msg: Resource.msg('msg.form.error', 'backinstock', null)
-     });
+     if (
+         !form || 
+         (form && form.email === undefined)
+        ) {
+        res.json({
+            success: false,
+            msg: Resource.msg('msg.form.error', 'backinstock', null)
+        });
+        return next();
+    }
+
+
+    // res.json({
+    //     success: false,
+    //     msg: Resource.msg('msg.form.error', 'backinstock', null)
+    //  });
 
     res.json({
        success: true,
