@@ -22,7 +22,7 @@
      var form = req.form;
 
      if (
-         !form || 
+         !form ||
          (form && form.email === undefined)
         ) {
         res.json({
