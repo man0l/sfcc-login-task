@@ -6,7 +6,8 @@
 
  var server = require('server');
  var Resource = require('dw/web/Resource');
-
+ var Transaction = require('dw/system/Transaction');
+ var CustomObjectMgr = require('dw/object/CustomObjectMgr');
 /**
  * Twilio-Subscribe : The endpoint when the user subscribes to recieve notifications for back in stock
  * @name Twilio-Subscribe
@@ -23,7 +24,8 @@
 
      if (
          !form ||
-         (form && form.email === undefined)
+         (form && form.phone === undefined) ||
+         (form && form.productId === undefined)
         ) {
         res.json({
             success: false,
@@ -32,6 +34,32 @@
         return next();
     }
 
+    var productId = form.productId;
+    
+    try {
+        Transaction.wrap(function () {
+            var entity = CustomObjectMgr.getCustomObject('NotifyMeBackInStock', productId);
+            if (!entity) {
+                var entity = CustomObjectMgr.createCustomObject('NotifyMeBackInStock', productId);
+            }
+            
+            if (entity.custom.phoneNumbers) {
+                if (entity.custom.phoneNumbers.indexOf(form.phone) === -1) {
+                    entity.custom.phoneNumbers += form.phone + ',';
+                }
+            } else {
+                entity.custom.phoneNumbers = form.phone + ',';
+            }
+            
+        });
+    } catch(e) {
+        res.json({
+            success: false,
+            msg: Resource.msg('msg.form.error', 'backinstock', null)
+        });
+        return next();
+    }
+    
 
     // res.json({
     //     success: false,
